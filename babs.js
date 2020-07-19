@@ -24,12 +24,21 @@ low(adapter)
 
 
     // GET  /latest
+    // e.g. http://localhost:3000/latest?param=key2
+
     app.get("/latest", (req, res, next) => {
       console.log('get!!!');
-     
+
+      var N = 1000;
+    if (req.query.limit) {
+            N = parseInt(req.query.limit);
+    }
+
       //var data = db.get('posts').map('temp').value();
       //var data = db.get('posts').map('temp')
-      var data = db.get('posts').take(5)
+      //var data = db.get('posts').take(5)
+      //var data = db.get('posts').map(req.query.param)
+      var data = db.get('posts').sortBy('id').take(N);
 
       res.json({
         "message":"success",
