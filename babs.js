@@ -4,6 +4,9 @@ const low = require('lowdb')
 const FileAsync = require('lowdb/adapters/FileAsync')
 var moment = require("moment");
 
+var HTTP_PORT = 9000;
+
+
 // Create server
 const app = express()
 app.use(bodyParser.json())
@@ -64,5 +67,5 @@ low(adapter)
     return db.defaults({ posts: [] }).write()
   })
   .then(() => {
-    app.listen(3000, () => console.log('listening on port 3000'))
+    app.listen(HTTP_PORT, () => console.log('listening on port ',HTTP_PORT))
   })
