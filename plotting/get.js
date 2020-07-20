@@ -56,16 +56,18 @@ for (i in data) {
 //  xvals.push(data[i].id);
   xvals.push(timeConverter(data[i].id));
   h_d_a.push(data[i].h_d_a);
+  h_d_b.push(data[i].h_d_b);
 }
 
 // flip b/c of way we got the data form sql:
 xvals=xvals.reverse();
 h_d_a=h_d_a.reverse();
+h_d_b=h_d_b.reverse();
 
 var h_d_a_points = [];
 for (var i=0; i<xvals.length; i++) {
-
 	h_d_a_points[i]= {t:xvals[i],y:h_d_a[i]};
+	h_d_b_points[i]= {t:xvals[i],y:h_d_b[i]};
 }
 
 
@@ -86,6 +88,20 @@ var humidityChart = new Chart(ctx_humidity, {
       label: 'RH (%)',
 	    fill: false,
       data: h_d_a_points,
+      borderWidth: 1
+    },
+    {
+	    borderColor: "green",
+            pointRadius: 1,
+   backgroundColor: "green",
+   //pointBackgroundColor: "#55bae7",
+   pointBackgroundColor: "green",
+   pointBorderColor: "green",
+   pointHoverBackgroundColor: "green",
+   pointHoverBorderColor: "green",
+      label: 'RH (%)',
+	    fill: false,
+      data: h_d_b_points,
       borderWidth: 1
     }
     ]
