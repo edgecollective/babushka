@@ -69,7 +69,7 @@ for (var i=0; i<xvals.length; i++) {
 }
 
 
-var ctx_humidity = document.getElementById('distanceChart').getContext('2d');
+var ctx_humidity = document.getElementById('humidityChart').getContext('2d');
 var humidityChart = new Chart(ctx_humidity, {
   type: 'line',
   data: {
@@ -85,7 +85,7 @@ var humidityChart = new Chart(ctx_humidity, {
    pointHoverBorderColor: "green",
       label: 'RH (%)',
 	    fill: false,
-      data: h_d_a_points
+      data: h_d_a_points,
       borderWidth: 1
     }
     ]
