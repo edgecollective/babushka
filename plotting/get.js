@@ -1,5 +1,5 @@
 function timeConverter(UNIX_timestamp){
-  var a = new Date(UNIX_timestamp * 1000);
+  var a = new Date(UNIX_timestamp);
 //      console.log(a);
   var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var year = a.getFullYear();
@@ -19,7 +19,7 @@ var heightRef = 200; // cm
 
 var urlParams = new URLSearchParams(window.location.search);
 
-var limit = 3000;
+var limit = 3;
 
 var param_limit = urlParams.get('limit');
 
@@ -28,7 +28,7 @@ limit = parseInt(param_limit);
 }
 
 
-var base_url = 'http://64.227.0.108:9000/latest'
+var base_url = 'http://64.227.0.108:9000/latest?limit=200'
 var fetch_url = base_url;
 
 
@@ -53,8 +53,8 @@ var h_d_b = [];
 for (i in data) {
   //xvals.push(i);
   //xvals.push(data[i].id);
-//  xvals.push(data[i].id);
-  xvals.push(timeConverter(data[i].id));
+  xvals.push(data[i].ts);
+  //xvals.push(timeConverter(data[i].id));
   h_d_a.push(data[i].h_d_a);
   h_d_b.push(data[i].h_d_b);
 }
@@ -65,6 +65,7 @@ h_d_a=h_d_a.reverse();
 h_d_b=h_d_b.reverse();
 
 var h_d_a_points = [];
+var h_d_b_points = [];
 for (var i=0; i<xvals.length; i++) {
 	h_d_a_points[i]= {t:xvals[i],y:h_d_a[i]};
 	h_d_b_points[i]= {t:xvals[i],y:h_d_b[i]};
@@ -121,14 +122,14 @@ var humidityChart = new Chart(ctx_humidity, {
         type: 'time',
 	time: {
 		//format: "HH:MM:SS",
-		//unit: 'day',
+		unit: 'hour',
 		//minUnit: 'hour',
 	}
       }],
 	    yAxes: [{
                 ticks: {
-                    suggestedMin: 20,
-                    suggestedMax: 200 
+                    suggestedMin: 60,
+                    suggestedMax: 80 
                 }
             }]
     }

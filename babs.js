@@ -41,7 +41,7 @@ low(adapter)
       //var data = db.get('posts').map('temp')
       //var data = db.get('posts').take(5)
       //var data = db.get('posts').map(req.query.param)
-      var data = db.get('posts').sortBy('id').take(N);
+      var data = db.get('posts').sortBy('id').reverse().take(N);
 
       res.json({
         "message":"success",
@@ -50,10 +50,14 @@ low(adapter)
 
     });
 
+    // serve the main page
+    app.use(express.static('plotting'))
 
     // POST /posts
     app.post('/posts', (req, res) => {
-      
+    
+	   console.log(req.body)
+
       db.get('posts')
         .push(req.body)
         .last()
