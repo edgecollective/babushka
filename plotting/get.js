@@ -51,7 +51,15 @@ var h_d_b = [];
 var h_d_c = [];
 var h_s = [];
 var h_b = [];	  	
-// get the data
+
+	  var t_s = [];
+	  var t_b = [];
+	  var t_d_a = [];
+	  var t_d_b = [];
+	  var t_d_c = []
+
+	  
+	  // get the data
 for (i in data) {
 	if (data[i].h_d_b < 1000) {
   //xvals.push(i);
@@ -63,6 +71,12 @@ for (i in data) {
   h_d_c.push(data[i].h_d_c);
 h_s.push(data[i].h_s);
 h_b.push(data[i].h_b);
+		t_s.push(data[i].t_s);
+		t_b.push(data[i].t_b);
+t_d_a.push(data[i].t_d_b);
+t_d_b.push(data[i].t_d_b);
+t_d_c.push(data[i].t_d_b);
+
 	}
 }
 
@@ -74,6 +88,12 @@ h_d_c=h_d_c.reverse();
 h_s=h_s.reverse();
 h_b=h_b.reverse();
 
+t_b=t_b.reverse();
+t_s=t_s.reverse();
+t_d_a=t_d_a.reverse();
+t_d_b=t_d_b.reverse();
+t_d_c=t_d_c.reverse();
+
 
 var h_d_a_points = [];
 var h_d_b_points = [];
@@ -81,12 +101,26 @@ var h_d_c_points = [];
 var h_b_points = [];
 var h_s_points = [];
 
+var t_s_points = [];
+var t_b_points = [];
+var t_d_a_points = [];
+var t_d_b_points = [];
+var t_d_c_points = [];
+
 for (var i=0; i<xvals.length; i++) {
 	h_d_a_points[i]= {t:xvals[i],y:h_d_a[i]};
 	h_d_b_points[i]= {t:xvals[i],y:h_d_b[i]};
         h_d_c_points[i]= {t:xvals[i],y:h_d_c[i]};
         h_b_points[i]= {t:xvals[i],y:h_b[i]};
         h_s_points[i]= {t:xvals[i],y:h_s[i]};
+
+    t_d_a_points[i]= {t:xvals[i],y:t_d_a[i]};
+        t_d_b_points[i]= {t:xvals[i],y:t_d_b[i]};
+        t_d_c_points[i]= {t:xvals[i],y:t_d_c[i]};
+        t_b_points[i]= {t:xvals[i],y:t_b[i]};
+        t_s_points[i]= {t:xvals[i],y:t_s[i]};
+
+
 }
 
 
