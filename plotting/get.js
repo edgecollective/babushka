@@ -19,7 +19,7 @@ var heightRef = 200; // cm
 
 var urlParams = new URLSearchParams(window.location.search);
 
-var limit = 3;
+var limit = 1000;
 
 var param_limit = urlParams.get('limit');
 
@@ -28,8 +28,8 @@ limit = parseInt(param_limit);
 }
 
 
-var base_url = 'http://64.227.0.108:9000/latest?limit=200'
-var fetch_url = base_url;
+var base_url = 'http://64.227.0.108:9000/latest?limit='
+var fetch_url = base_url.concat(limit.toString())
 
 
 
@@ -48,7 +48,9 @@ var xvals = [];
 var timestamp = [];
 var h_d_a = [];
 var h_d_b = [];
-	
+var h_d_c = [];
+var h_s = [];
+var h_b = [];	  	
 // get the data
 for (i in data) {
   //xvals.push(i);
@@ -57,18 +59,33 @@ for (i in data) {
   //xvals.push(timeConverter(data[i].id));
   h_d_a.push(data[i].h_d_a);
   h_d_b.push(data[i].h_d_b);
+  h_d_c.push(data[i].h_d_c);
+h_s.push(data[i].h_s);
+h_b.push(data[i].h_b);
+
 }
 
 // flip b/c of way we got the data form sql:
 xvals=xvals.reverse();
 h_d_a=h_d_a.reverse();
 h_d_b=h_d_b.reverse();
+h_d_c=h_d_c.reverse();
+h_s=h_s.reverse();
+h_b=h_b.reverse();
+
 
 var h_d_a_points = [];
 var h_d_b_points = [];
+var h_d_c_points = [];
+var h_b_points = [];
+var h_s_points = [];
+
 for (var i=0; i<xvals.length; i++) {
 	h_d_a_points[i]= {t:xvals[i],y:h_d_a[i]};
 	h_d_b_points[i]= {t:xvals[i],y:h_d_b[i]};
+        h_d_c_points[i]= {t:xvals[i],y:h_d_c[i]};
+        h_b_points[i]= {t:xvals[i],y:h_b[i]};
+        h_s_points[i]= {t:xvals[i],y:h_s[i]};
 }
 
 
@@ -77,18 +94,33 @@ var humidityChart = new Chart(ctx_humidity, {
   type: 'line',
   data: {
     labels: xvals,
-    datasets: [{
-	    borderColor: "green",
+    datasets: [
+	      {
+            borderColor: "blue",
             pointRadius: 1,
-   backgroundColor: "green",
+   backgroundColor: "blue",
    //pointBackgroundColor: "#55bae7",
-   pointBackgroundColor: "green",
-   pointBorderColor: "green",
-   pointHoverBackgroundColor: "green",
-   pointHoverBorderColor: "green",
-      label: 'RH (%)',
-	    fill: false,
+   pointBackgroundColor: "blue",
+   pointBorderColor: "blue",
+   pointHoverBackgroundColor: "blue",
+   pointHoverBorderColor: "blue",
+      label: 'h_d_a',
+            fill: false,
       data: h_d_a_points,
+      borderWidth: 1
+    },
+	    {
+	    borderColor: "red",
+            pointRadius: 1,
+   backgroundColor: "red",
+   //pointBackgroundColor: "#55bae7",
+   pointBackgroundColor: "red",
+   pointBorderColor: "red",
+   pointHoverBackgroundColor: "red",
+   pointHoverBorderColor: "red",
+      label: 'h_d_b',
+	    fill: false,
+      data: h_d_b_points,
       borderWidth: 1
     },
     {
@@ -100,11 +132,40 @@ var humidityChart = new Chart(ctx_humidity, {
    pointBorderColor: "green",
    pointHoverBackgroundColor: "green",
    pointHoverBorderColor: "green",
-      label: 'RH (%)',
+      label: 'h_d_c',
 	    fill: false,
-      data: h_d_b_points,
+      data: h_d_c_points,
+      borderWidth: 1
+    },
+	    {
+            borderColor: "pink",
+            pointRadius: 1,
+   backgroundColor: "pink",
+   //pointBackgroundColor: "#55bae7",
+   pointBackgroundColor: "pink",
+   pointBorderColor: "pink",
+   pointHoverBackgroundColor: "pink",
+   pointHoverBorderColor: "pink",
+      label: 'h_b',
+            fill: false,
+      data: h_b_points,
+      borderWidth: 1
+    },
+{
+            borderColor: "lightgreen",
+            pointRadius: 1,
+   backgroundColor: "lightgreen",
+   //pointBackgroundColor: "#55bae7",
+   pointBackgroundColor: "lightgreen",
+   pointBorderColor: "lightgreen",
+   pointHoverBackgroundColor: "lightgreen",
+   pointHoverBorderColor: "lightgreen",
+      label: 'h_s',
+            fill: false,
+      data: h_s_points,
       borderWidth: 1
     }
+
     ]
   },
   options: {
@@ -114,7 +175,7 @@ var humidityChart = new Chart(ctx_humidity, {
         },
 	  title: {
             display: true,
-            text: 'Maxbotix Ultrasonic Rangefinder'
+            text: 'RH (%)'
         },
 	  responsive:false,
     scales: {
