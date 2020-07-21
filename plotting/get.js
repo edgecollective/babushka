@@ -53,6 +53,7 @@ var h_s = [];
 var h_b = [];	  	
 // get the data
 for (i in data) {
+	if (data[i].h_d_b < 1000) {
   //xvals.push(i);
   //xvals.push(data[i].id);
   xvals.push(data[i].ts);
@@ -62,7 +63,7 @@ for (i in data) {
   h_d_c.push(data[i].h_d_c);
 h_s.push(data[i].h_s);
 h_b.push(data[i].h_b);
-
+	}
 }
 
 // flip b/c of way we got the data form sql:
