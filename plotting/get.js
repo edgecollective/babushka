@@ -232,8 +232,8 @@ var humidityChart = new Chart(ctx_humidity, {
   }
 });
 
-var ctx_humidity = document.getElementById('humidityChart').getContext('2d');
-var humidityChart = new Chart(ctx_humidity, {
+var ctx_temp = document.getElementById('tempChart').getContext('2d');
+var tempChart = new Chart(ctx_temp, {
   type: 'line',
   data: {
     labels: xvals,
@@ -249,7 +249,7 @@ var humidityChart = new Chart(ctx_humidity, {
    pointHoverBorderColor: "blue",
       label: 't_d_a',
             fill: false,
-      data: h_d_a_points,
+      data: t_d_a_points,
       borderWidth: 1
     },
 	    {
@@ -263,7 +263,7 @@ var humidityChart = new Chart(ctx_humidity, {
    pointHoverBorderColor: "red",
       label: 't_d_b',
 	    fill: false,
-      data: h_d_b_points,
+      data: t_d_b_points,
       borderWidth: 1
     },
     {
@@ -277,7 +277,7 @@ var humidityChart = new Chart(ctx_humidity, {
    pointHoverBorderColor: "green",
       label: 't_d_c',
 	    fill: false,
-      data: h_d_c_points,
+      data: t_d_c_points,
       borderWidth: 1
     },
 	    {
@@ -291,7 +291,7 @@ var humidityChart = new Chart(ctx_humidity, {
    pointHoverBorderColor: "pink",
       label: 't_b',
             fill: false,
-      data: h_b_points,
+      data: t_b_points,
       borderWidth: 1
     },
 {
@@ -305,7 +305,7 @@ var humidityChart = new Chart(ctx_humidity, {
    pointHoverBorderColor: "lightgreen",
       label: 't_s',
             fill: false,
-      data: h_s_points,
+      data: t_s_points,
       borderWidth: 1
     }
 
