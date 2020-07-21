@@ -232,6 +232,113 @@ var humidityChart = new Chart(ctx_humidity, {
   }
 });
 
+var ctx_humidity = document.getElementById('humidityChart').getContext('2d');
+var humidityChart = new Chart(ctx_humidity, {
+  type: 'line',
+  data: {
+    labels: xvals,
+    datasets: [
+	      {
+            borderColor: "blue",
+            pointRadius: 1,
+   backgroundColor: "blue",
+   //pointBackgroundColor: "#55bae7",
+   pointBackgroundColor: "blue",
+   pointBorderColor: "blue",
+   pointHoverBackgroundColor: "blue",
+   pointHoverBorderColor: "blue",
+      label: 't_d_a',
+            fill: false,
+      data: h_d_a_points,
+      borderWidth: 1
+    },
+	    {
+	    borderColor: "red",
+            pointRadius: 1,
+   backgroundColor: "red",
+   //pointBackgroundColor: "#55bae7",
+   pointBackgroundColor: "red",
+   pointBorderColor: "red",
+   pointHoverBackgroundColor: "red",
+   pointHoverBorderColor: "red",
+      label: 't_d_b',
+	    fill: false,
+      data: h_d_b_points,
+      borderWidth: 1
+    },
+    {
+	    borderColor: "green",
+            pointRadius: 1,
+   backgroundColor: "green",
+   //pointBackgroundColor: "#55bae7",
+   pointBackgroundColor: "green",
+   pointBorderColor: "green",
+   pointHoverBackgroundColor: "green",
+   pointHoverBorderColor: "green",
+      label: 't_d_c',
+	    fill: false,
+      data: h_d_c_points,
+      borderWidth: 1
+    },
+	    {
+            borderColor: "pink",
+            pointRadius: 1,
+   backgroundColor: "pink",
+   //pointBackgroundColor: "#55bae7",
+   pointBackgroundColor: "pink",
+   pointBorderColor: "pink",
+   pointHoverBackgroundColor: "pink",
+   pointHoverBorderColor: "pink",
+      label: 't_b',
+            fill: false,
+      data: h_b_points,
+      borderWidth: 1
+    },
+{
+            borderColor: "lightgreen",
+            pointRadius: 1,
+   backgroundColor: "lightgreen",
+   //pointBackgroundColor: "#55bae7",
+   pointBackgroundColor: "lightgreen",
+   pointBorderColor: "lightgreen",
+   pointHoverBackgroundColor: "lightgreen",
+   pointHoverBorderColor: "lightgreen",
+      label: 't_s',
+            fill: false,
+      data: h_s_points,
+      borderWidth: 1
+    }
+
+    ]
+  },
+  options: {
+	  legend: {
+            display: true,
+		  //position: 'right',
+        },
+	  title: {
+            display: true,
+            text: 'RH (%)'
+        },
+	  responsive:false,
+    scales: {
+      xAxes: [{
+        type: 'time',
+	time: {
+		//format: "HH:MM:SS",
+		unit: 'hour',
+		//minUnit: 'hour',
+	}
+      }],
+	    yAxes: [{
+                ticks: {
+                    suggestedMin: 60,
+                    suggestedMax: 80 
+                }
+            }]
+    }
+  }
+});
 
 });
 
